@@ -35,7 +35,7 @@ To authorize, first add user. Then send POST request to obtain the JWT token:
 
 You should now be able to visit page for logged users:
 
-`curl --location --request GET 'bakapot.localhost:8081/auth/hello-world/greet' --header 'Authorization: Bearer {token}'`
+`curl --location --request GET 'http://symfony.localhost:8081/auth/hello-world/greet' --header 'Authorization: Bearer {token}'`
 
 ## Code quality
 
