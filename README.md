@@ -10,6 +10,10 @@
 
 Then access [symfony.localhost:8081](symfony.localhost:8081), you should see symfony welcome page
 
+### stop docker:
+
+`make down`
+
 ### remove database:
 
 `make clean-database`
