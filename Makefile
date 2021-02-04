@@ -1,22 +1,13 @@
-APP_NAME=symfony
-
 ifndef APP_ENV
 APP_ENV=dev
 endif
 
-# Use Docker unless NO_DOCKER is "truthy" or if we're inside a Docker container already
-ifeq (, $(or $(filter-out 0 false, ${NO_DOCKER}), $(wildcard /.dockerenv)))
-USING_DOCKER=1
-endif
-
-ifeq (${USING_DOCKER}, 1)
 DOCKER_COMPOSE=docker-compose
 DOCKER_RUN=${DOCKER_COMPOSE} exec -u $(shell id -u):$(shell id -g) php
-endif
 
 .PHONY: build
 build:
-	sh up.sh ${APP_NAME}
+	sh up.sh
 	docker exec -it symfony-docker_php_1 sh db.sh
 
 .PHONY: clean-database
