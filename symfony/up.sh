@@ -26,10 +26,10 @@ then
 fi
 
 if id "$1" &>/dev/null; then
-    echo "user $1 found"
-else
     echo "adding user $1"
     useradd "$1"
+else
+    echo "user $1 found"
 fi
 
 chown -R "$1:www-data" ./*
