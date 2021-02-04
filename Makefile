@@ -7,8 +7,8 @@ DOCKER_RUN=${DOCKER_COMPOSE} exec -u $(shell id -u):$(shell id -g) php
 
 .PHONY: build
 build:
-	sh up.sh
-	docker exec -it symfony-docker_php_1 sh db.sh
+	sh shell/up.sh
+	docker exec -it symfony-docker_php_1 sh shell/db.sh
 
 .PHONY: clean-database
 clean-database:
