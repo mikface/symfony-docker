@@ -1,15 +1,15 @@
-# Symfony 5.2 REST api running in Docker container (php8, mysql 8, nginx) boilerplate
+# Symfony 5.2 REST api running in Docker container (php 8.0, mysql 8, nginx) boilerplate
 
 ## install:
 
-`git clone git@github.com:mikface/symfony-docker.git`
+`git clone git@github.com:mikface/symfony-docker.git` / `git clone https://github.com/mikface/symfony-docker.git`
 
 `cd symfony-docker`
 
 `make`
 
 Then access [symfony.localhost:8081](http://symfony.localhost:8081), you should see symfony welcome page.
-(url can be changed in docker-compose.yml, line 32)
+(url can be changed in **docker-compose.yml**, line 32)
 
 ### stop docker:
 
@@ -23,7 +23,7 @@ Then access [symfony.localhost:8081](http://symfony.localhost:8081), you should 
 
 `make add-user`
 
-### list all users
+### list all app users
 
 `make list-users`
 
