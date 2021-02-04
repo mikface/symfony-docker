@@ -1,4 +1,4 @@
-# Symfony 5 with Docker (php8, mysql 8, nginx) boilerplate
+# Symfony 5.2 app using Docker container (php8, mysql 8, nginx) boilerplate
 
 ## install:
 
