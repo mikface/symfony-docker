@@ -2,7 +2,7 @@
 if [ ! -f "./.env" ]; then
   touch .env
 fi
-composer install --ignore-platform-reqs
+composer install
 if [ $?  -ne 0 ]; then
   echo "Composer failed"
   exit 1
