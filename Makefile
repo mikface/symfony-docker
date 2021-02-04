@@ -21,7 +21,8 @@ build:
 
 .PHONY: clean-database
 clean-database:
-	sudo docker volume rm symfony-docker_db_app
+	${DOCKER_COMPOSE} down
+	docker volume rm symfony-docker_db_app
 
 .PHONY: fix
 fix:
