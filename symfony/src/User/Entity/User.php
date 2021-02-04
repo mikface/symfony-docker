@@ -100,9 +100,9 @@ class User implements UserInterface
     }
 
     /** @see UserInterface */
-    public function getSalt() : void
+    public function getSalt() : mixed
     {
-        // not needed when using the "bcrypt" algorithm in security.yaml
+        return null;
     }
 
     /** @see UserInterface */

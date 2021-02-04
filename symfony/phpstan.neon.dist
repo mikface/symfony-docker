@@ -1,0 +1,7 @@
+parameters:
+    level: max
+    paths:
+        - %currentWorkingDirectory%/src
+        - %currentWorkingDirectory%/tests
+    tmpDir: %currentWorkingDirectory%/var/phpstan
+    checkGenericClassInNonGenericObjectType: false

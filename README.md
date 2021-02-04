@@ -43,7 +43,10 @@ To run Codesniffer
 
 `make cs`
 
-To run autofix
+Run cs autofix
 
 `make fix`
 
+Run phpstan:
+
+`make phpstan`
