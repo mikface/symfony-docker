@@ -1,21 +1,14 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Miky
- * Date: 29.09.2020
- * Time: 14:41
- */
+
+declare(strict_types=1);
 
 namespace App\User\Command;
 
-use App\Repository\UserRepository;
 use App\User\Service\UserManager;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\Output;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Question\Question;
 
 class CreateUserCommand extends Command
@@ -25,10 +18,11 @@ class CreateUserCommand extends Command
     public function __construct(private UserManager $userManager)
     {
         $this->questionHelper = null;
+
         parent::__construct();
     }
 
-    protected function configure()
+    protected function configure() : void
     {
         $this->setName('app:user:create');
         $this
@@ -36,7 +30,7 @@ class CreateUserCommand extends Command
             ->setHelp('This command allows you to create a user...');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output) : int
     {
         $this->questionHelper = $this->getHelper('question');
         $questionEmail = new Question('User email:', false);
@@ -47,20 +41,26 @@ class CreateUserCommand extends Command
         $password = $this->questionHelper->ask($input, $output, $questionPassword);
         $role = $this->questionHelper->ask($input, $output, $questionRole);
 
-        if (!$email || !$password) {
+        if (! $email || ! $password) {
             $output->writeln('<error>Failed: Enter valid credentials</error>');
+
             return Command::FAILURE;
         }
 
-        if (!$this->userManager->create(
-            $email,
-            $password,
-            $role
-        )) {
+        if (
+            ! $this->userManager->create(
+                $email,
+                $password,
+                $role
+            )
+        ) {
             $output->writeln('<error>Failed: User with entered email already exists</error>');
+
             return Command::FAILURE;
         }
-        $output->writeln('<info>Success: User with email '. $email. ' created</info>');
+
+        $output->writeln('<info>Success: User with email ' . $email . ' created</info>');
+
         return Command::SUCCESS;
     }
 }

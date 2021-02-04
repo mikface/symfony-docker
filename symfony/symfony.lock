@@ -1,4 +1,7 @@
 {
+    "cdn77/coding-standard": {
+        "version": "v4.0.1"
+    },
     "composer/package-versions-deprecated": {
         "version": "1.11.99"
     },
