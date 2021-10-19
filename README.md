@@ -1,6 +1,7 @@
-# Symfony 5.3 | PHP 8.0 | MySQL 8 | NGINX | Docker boilerplate
+# Symfony 5 + PHP 8 + MySQL 8 + NGINX boilerplate
 
-## install:
+Easy kick off for Symfony REST API / microservice running in Docker container using LEMP stack. Pre-packed with basic code quality tools. 
+## Installation and Configuration
 
 1) `git clone git@github.com:mikface/symfony-docker.git <your-folder-name>` 
 
@@ -12,23 +13,23 @@
 
 3) `make`
 
-Then access [symfony.localhost:8081](http://symfony.localhost:8081), you should see symfony welcome page.
+Then access [symfony.localhost:8081](http://symfony.localhost:8081), you should see the Symfony welcome page.
 
 (**url** / **port** can be changed in **docker-compose.yml::32** / **docker-compose.yml::36**)
 
-### stop docker:
+### Stop docker:
 
 `make down`
 
-### remove database:
+### Remove database:
 
 `make clean-database`
 
-### add user for app
+### Add user for app:
 
 `make add-user`
 
-### list all app users
+### List all app users:
 
 `make list-users`
 
@@ -48,18 +49,18 @@ You should now be able to visit page for logged users:
 
 ## Code quality
 
-To run Codesniffer
+### Run Codesniffer:
 
 `make cs`
 
-Run cs autofix
+### Run cs autofix:
 
 `make fix`
 
-Run phpstan:
+### Run phpstan:
 
 `make phpstan`
 
-Reinit git repo:
+### Reinit git repo:
 
 `make init-git`
