@@ -26,4 +26,6 @@ if [ $? -ne 0 ]; then
   echo "Docker compose failed"
   exit 1
 fi
-docker exec -it symfony-docker_php_1 sh shell/up.sh `whoami`
+docker exec -it `basename $PWD`_php_1 sh shell/up.sh `whoami`
+
+docker exec -it `basename $PWD`_php_1 sh shell/db.sh

@@ -1,19 +1,14 @@
-ifndef APP_ENV
-APP_ENV=dev
-endif
-
 DOCKER_COMPOSE=docker-compose
 DOCKER_RUN=${DOCKER_COMPOSE} exec -u $(shell id -u):$(shell id -g) php
 
 .PHONY: build
 build:
 	sh shell/up.sh
-	docker exec -it symfony-docker_php_1 sh shell/db.sh
 
 .PHONY: clean-database
 clean-database:
 	${DOCKER_COMPOSE} down
-	docker volume rm symfony-docker_db_app
+	docker volume rm $(shell basename $(PWD))_db_app
 
 .PHONY: fix
 fix:
