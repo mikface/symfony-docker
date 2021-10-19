@@ -2,13 +2,13 @@
 
 ## install:
 
-1) `git clone git@github.com:mikface/symfony-docker.git your-folder-name` 
+1) `git clone git@github.com:mikface/symfony-docker.git <your-folder-name>` 
 
     or
 
-    `git clone https://github.com/mikface/symfony-docker.git your-folder-name`
+    `git clone https://github.com/mikface/symfony-docker.git <your-folder-name>`
 
-2) `cd your-folder-name`
+2) `cd <your-folder-name>`
 
 3) `make`
 
