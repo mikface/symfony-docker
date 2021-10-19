@@ -2,11 +2,15 @@
 
 ## install:
 
-`git clone git@github.com:mikface/symfony-docker.git` / `git clone https://github.com/mikface/symfony-docker.git`
+1) `git clone git@github.com:mikface/symfony-docker.git your-folder-name` 
 
-`cd symfony-docker`
+    or
 
-`make`
+    `git clone https://github.com/mikface/symfony-docker.git your-folder-name`
+
+2) `cd symfony-docker`
+
+3) `make`
 
 Then access [symfony.localhost:8081](http://symfony.localhost:8081), you should see symfony welcome page.
 (url can be changed in **docker-compose.yml**, line 32)
@@ -54,3 +58,7 @@ Run cs autofix
 Run phpstan:
 
 `make phpstan`
+
+Reinit git repo:
+
+`make init-git`

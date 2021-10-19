@@ -33,3 +33,7 @@ add-user:
 .PHONY: list-users
 list-users:
 	${DOCKER_RUN} bin/console app:user:list
+
+.PHONY: reinit-git
+reinit-git:
+	sh shell/git.sh

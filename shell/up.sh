@@ -1,5 +1,4 @@
 #!/bin/bash
-read -p "Enter your symfony app name: " SYMFONY_APP_NAME
 MYSQL_ENV_FILE="mysql-variables.env"
 SYMFONY_ENV_FILE="symfony-variables.env"
 if [ ! -f "$MYSQL_ENV_FILE" ] || [ ! -f "$SYMFONY_ENV_FILE" ]; then
@@ -7,7 +6,7 @@ if [ ! -f "$MYSQL_ENV_FILE" ] || [ ! -f "$SYMFONY_ENV_FILE" ]; then
   ROOT_PASSWORD=`< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};echo;`
   PASSWORD=`< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};echo;`
   SYMFONY_APP_SECRET=`< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};echo;`
-  USER_DATABASE="$SYMFONY_APP_NAME"
+  USER_DATABASE=`basename $PWD`
   DB_CONTAINER="db"
   #mysql file
   echo "MYSQL_ROOT_PASSWORD=$ROOT_PASSWORD" > "$MYSQL_ENV_FILE"
