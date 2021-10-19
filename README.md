@@ -1,4 +1,4 @@
-# Symfony 5.2 REST api running in Docker container (php 8.0, mysql 8, nginx) boilerplate
+# Symfony 5.3 REST api running in Docker container (php 8.0, mysql 8, nginx) boilerplate
 
 ## install:
 
