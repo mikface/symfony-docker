@@ -2,13 +2,20 @@ DOCKER_COMPOSE=docker-compose
 DOCKER_RUN=${DOCKER_COMPOSE} exec -u $(shell id -u):$(shell id -g) php
 
 .PHONY: build
-build:
+build: build-container build-db
+
+.PHONY: build-container
+build-container:
 	sh shell/up.sh
+
+.PHONY: build-db
+build-db:
+	docker exec -it $(shell basename $(PWD))_php_1 sh shell/db.sh
 
 .PHONY: clean-database
 clean-database:
 	${DOCKER_COMPOSE} down
-	docker volume rm $(shell basename $(PWD))_db_app
+	sh shell/remove-db.sh
 
 .PHONY: fix
 fix:
