@@ -17,11 +17,6 @@ if [ ! -f "./config/jwt/private.pem" ] || [ ! -f "./config/jwt/public.pem" ]; th
   bin/console lexik:jwt:generate-keypair
 fi
 
-if id "$1" &>/dev/null; then
-    echo "adding user $1"
-    useradd "$1"
-else
-    echo "user $1 found"
-fi
+id -u "$1" >/dev/null 2>&1 || useradd "$1"
 
 chown -R "$1:www-data" ./*
