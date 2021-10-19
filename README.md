@@ -1,6 +1,10 @@
 # Symfony 5 + PHP 8 + MySQL 8 + NGINX boilerplate
 
 Easy kick off for Symfony REST API / microservice running in Docker container using LEMP stack. Pre-packed with basic code quality tools. 
+
+## Prerequisites
+1) Docker Engine (https://docs.docker.com/engine/install/)
+2) Docker Compose (https://docs.docker.com/compose/install/)
 ## Installation and Configuration
 
 1) `git clone git@github.com:mikface/symfony-docker.git <your-folder-name>` 
