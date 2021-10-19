@@ -6,16 +6,16 @@ build: build-container build-db
 
 .PHONY: build-container
 build-container:
-	sh shell/up.sh
+	bash shell/up.sh
 
 .PHONY: build-db
 build-db:
-	docker exec -it $(shell basename $(PWD))_php_1 sh shell/db.sh
+	docker exec -it $(shell basename $(PWD))_php_1 bash shell/db.sh
 
 .PHONY: clean-database
 clean-database:
 	${DOCKER_COMPOSE} down
-	sh shell/remove-db.sh
+	bash shell/remove-db.sh
 
 .PHONY: fix
 fix:
@@ -43,4 +43,4 @@ list-users:
 
 .PHONY: reinit-git
 reinit-git:
-	sh shell/git.sh
+	bash shell/git.sh

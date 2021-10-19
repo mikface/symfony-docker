@@ -8,12 +8,13 @@
 
     `git clone https://github.com/mikface/symfony-docker.git your-folder-name`
 
-2) `cd symfony-docker`
+2) `cd your-folder-name`
 
 3) `make`
 
 Then access [symfony.localhost:8081](http://symfony.localhost:8081), you should see symfony welcome page.
-(url can be changed in **docker-compose.yml**, line 32)
+
+(**url** / **port** can be changed in **docker-compose.yml::32** / **docker-compose.yml::36**)
 
 ### stop docker:
 

@@ -26,4 +26,4 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-docker exec -it `basename $PWD`_php_1 sh shell/up.sh `whoami`
+docker exec -it `basename $PWD`_php_1 bash shell/up.sh `whoami`
