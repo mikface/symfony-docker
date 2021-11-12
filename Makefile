@@ -49,3 +49,7 @@ list-users:
 .PHONY: reinit-git
 reinit-git:
 	bash shell/git.sh
+
+.PHONY: bash-php
+bash-php:
+	docker exec -it $(shell basename $(PWD))_php_1 /bin/bash

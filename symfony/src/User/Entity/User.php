@@ -15,7 +15,6 @@ class User implements UserInterface
 {
     public const ROLE_USER = 'ROLE_USER';
     public const ROLE_RESTRICTED = 'ROLE_RESTRICTED';
-    public const ROLE_LOGGER = 'ROLE_LOGGER';
 
     /**
      * @ORM\Id
@@ -61,7 +60,12 @@ class User implements UserInterface
      */
     public function getUsername() : string
     {
-        return (string) $this->email;
+        return $this->email;
+    }
+
+    public function getUserIdentifier(): string
+    {
+        return $this->getUsername();
     }
 
     /**
@@ -73,7 +77,7 @@ class User implements UserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        $roles[] = self::ROLE_USER;
 
         return array_unique($roles);
     }
@@ -89,7 +93,7 @@ class User implements UserInterface
     /** @see UserInterface */
     public function getPassword() : string
     {
-        return (string) $this->password;
+        return $this->password;
     }
 
     public function setPassword(string $password) : self
