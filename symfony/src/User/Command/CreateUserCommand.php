@@ -12,14 +12,12 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 use Webmozart\Assert\Assert;
 
+use function assert;
+
 class CreateUserCommand extends Command
 {
-    private ?QuestionHelper $questionHelper;
-
     public function __construct(private UserManager $userManager)
     {
-        $this->questionHelper = null;
-
         parent::__construct();
     }
 
@@ -34,17 +32,19 @@ class CreateUserCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output) : int
     {
         $questionHelper = $this->getHelper('question');
+        assert($questionHelper instanceof QuestionHelper);
         Assert::isInstanceOf($questionHelper, QuestionHelper::class);
-        $this->questionHelper = $questionHelper;
         $questionEmail = new Question('User email:', false);
         $questionPassword = new Question('User password:', false);
         $questionPassword->setHidden(true);
         $questionRole = new Question('User role [ROLE_USER]:', 'ROLE_USER');
-        $email = $this->questionHelper->ask($input, $output, $questionEmail);
-        $password = $this->questionHelper->ask($input, $output, $questionPassword);
-        $role = $this->questionHelper->ask($input, $output, $questionRole);
+        $email = $questionHelper->ask($input, $output, $questionEmail);
+        $password = $questionHelper->ask($input, $output, $questionPassword);
+        $role = $questionHelper->ask($input, $output, $questionRole);
 
-        Assert::allString([$email, $password, $role]);
+        Assert::string($email);
+        Assert::string($password);
+        Assert::string($role);
 
         if (! $email || ! $password) {
             $output->writeln('<error>Failed: Enter valid credentials</error>');

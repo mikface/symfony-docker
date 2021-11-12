@@ -8,11 +8,7 @@
     <arg name="colors"/>
     <arg name="extensions" value="php"/>
 
-    <rule ref="Cdn77">
-        <exclude name="SlevomatCodingStandard.Classes.PropertySpacing"/>
-        <exclude name="Squiz.WhiteSpace.FunctionSpacing.Before"/>
-        <exclude name="SlevomatCodingStandard.Namespaces.UnusedUses.UnusedUse"/>
-    </rule>
+    <rule ref="Cdn77"/>
 
     <file>src/</file>
     <file>tests/</file>
