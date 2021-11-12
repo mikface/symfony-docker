@@ -7,6 +7,7 @@ namespace App\User\Command;
 use App\User\Entity\User;
 use App\User\Repository\UserRepository;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -33,12 +34,15 @@ class ListUsersCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output) : int
     {
+        $table = new Table($output);
+        $table->setHeaders(['Email', 'Roles']);
         array_map(
-            static function (User $user) use ($output) : void {
-                $output->writeln('Email: ' . $user->getEmail() . ' | Roles: ' . json_encode($user->getRoles()));
+            static function (User $user) use ($table) : void {
+                $table->addRow([$user->getEmail(), json_encode($user->getRoles())]);
             },
             $this->userRepository->getAllUsers()
         );
+        $table->render();
 
         return Command::SUCCESS;
     }
