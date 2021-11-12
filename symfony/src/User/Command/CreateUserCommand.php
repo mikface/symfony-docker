@@ -10,6 +10,7 @@ use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
+use Webmozart\Assert\Assert;
 
 class CreateUserCommand extends Command
 {
@@ -32,7 +33,9 @@ class CreateUserCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output) : int
     {
-        $this->questionHelper = $this->getHelper('question');
+        $questionHelper = $this->getHelper('question');
+        Assert::isInstanceOf($questionHelper, QuestionHelper::class);
+        $this->questionHelper = $questionHelper;
         $questionEmail = new Question('User email:', false);
         $questionPassword = new Question('User password:', false);
         $questionPassword->setHidden(true);
@@ -40,6 +43,8 @@ class CreateUserCommand extends Command
         $email = $this->questionHelper->ask($input, $output, $questionEmail);
         $password = $this->questionHelper->ask($input, $output, $questionPassword);
         $role = $this->questionHelper->ask($input, $output, $questionRole);
+
+        Assert::allString([$email, $password, $role]);
 
         if (! $email || ! $password) {
             $output->writeln('<error>Failed: Enter valid credentials</error>');

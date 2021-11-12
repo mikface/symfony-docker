@@ -10,30 +10,25 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 use function array_unique;
 
-/** @ORM\Entity(repositoryClass=UserRepository::class) */
+#[ORM\Entity(repositoryClass: UserRepository::class)]
 class User implements UserInterface
 {
     public const ROLE_USER = 'ROLE_USER';
     public const ROLE_RESTRICTED = 'ROLE_RESTRICTED';
 
-    /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
     private int $id;
 
-    /** @ORM\Column(type="string", length=180, unique=true) */
+    #[ORM\Column(type: 'string', length: 180, unique: true)]
     private string $email;
 
-    /**
-     * @ORM\Column(type="json")
-     *
-     * @var array<string>
-     */
+    /** @var list<string> $roles */
+    #[ORM\Column(type: 'json')]
     private array $roles = [];
 
-    /** @ORM\Column(type="string") */
+    #[ORM\Column(type: 'string')]
     private string $password;
 
     public function getId() : ?int
@@ -71,7 +66,7 @@ class User implements UserInterface
     /**
      * @see UserInterface
      *
-     * @return array<string>
+     * @return list<string>
      */
     public function getRoles() : array
     {
