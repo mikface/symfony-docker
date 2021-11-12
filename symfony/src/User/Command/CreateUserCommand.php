@@ -12,8 +12,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 use Webmozart\Assert\Assert;
 
-use function assert;
-
 class CreateUserCommand extends Command
 {
     public function __construct(private UserManager $userManager)
@@ -32,12 +30,11 @@ class CreateUserCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output) : int
     {
         $questionHelper = $this->getHelper('question');
-        assert($questionHelper instanceof QuestionHelper);
         Assert::isInstanceOf($questionHelper, QuestionHelper::class);
-        $questionEmail = new Question('User email:', false);
-        $questionPassword = new Question('User password:', false);
+        $questionEmail = new Question('User email: ', false);
+        $questionPassword = new Question('User password: ', false);
         $questionPassword->setHidden(true);
-        $questionRole = new Question('User role [ROLE_USER]:', 'ROLE_USER');
+        $questionRole = new Question('User role [ROLE_USER]: ', 'ROLE_USER');
         $email = $questionHelper->ask($input, $output, $questionEmail);
         $password = $questionHelper->ask($input, $output, $questionPassword);
         $role = $questionHelper->ask($input, $output, $questionRole);
