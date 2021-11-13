@@ -12,7 +12,6 @@ build-container:
 build-db:
 	docker exec -it $(shell basename $(PWD))_php_1 bash shell/db.sh
 
-
 .PHONY: fix-rights
 fix-rights:
 	docker exec -it $(shell basename $(PWD))_php_1 bash shell/fix-rights.sh $(shell whoami)
@@ -52,4 +51,4 @@ reinit-git:
 
 .PHONY: bash-php
 bash-php:
-	docker exec -it $(shell basename $(PWD))_php_1 /bin/bash
+	${DOCKER_RUN} /bin/bash
