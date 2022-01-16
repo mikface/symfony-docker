@@ -8,22 +8,22 @@ use App\Core\Service\EntityManagerConstructor;
 use App\User\Entity\User;
 use App\User\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UserManager extends EntityManagerConstructor
 {
     private UserRepository $userRepo;
-    private UserPasswordEncoderInterface $encoder;
+    private UserPasswordHasherInterface $hasher;
 
     public function __construct(
         EntityManagerInterface $em,
         UserRepository $userRepo,
-        UserPasswordEncoderInterface $encoder
+        UserPasswordHasherInterface $hasher
     ) {
         parent::__construct($em);
 
         $this->userRepo = $userRepo;
-        $this->encoder = $encoder;
+        $this->hasher = $hasher;
     }
 
     public function create(string $email, string $password, string $role = User::ROLE_RESTRICTED) : bool
@@ -34,7 +34,7 @@ class UserManager extends EntityManagerConstructor
 
         $newUser = new User();
         $newUser->setEmail($email);
-        $newUser->setPassword($this->encoder->encodePassword($newUser, $password));
+        $newUser->setPassword($this->hasher->hashPassword($newUser, $password));
         $newUser->setRoles([$role]);
         $this->em->persist($newUser);
         $this->em->flush();
