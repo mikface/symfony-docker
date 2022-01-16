@@ -1,4 +1,4 @@
-# Symfony 5 + PHP 8 + MySQL 8 + NGINX boilerplate
+# Symfony 6 + PHP 8.1 + MySQL 8 + NGINX boilerplate
 
 Easy kick off for Symfony REST API / microservice running in Docker container using LEMP stack. Pre-packed with basic code quality tools. 
 
