@@ -67,4 +67,4 @@ You should now be able to visit page for logged users:
 
 ### Reinit git repo:
 
-`make init-git`
+`make reinit-git`
