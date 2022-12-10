@@ -49,19 +49,6 @@
             "config/packages/prod/doctrine.yaml"
         ]
     },
-    "doctrine/doctrine-migrations-bundle": {
-        "version": "3.2",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "3.1",
-            "ref": "ee609429c9ee23e22d6fa5728211768f51ed2818"
-        },
-        "files": [
-            "config/packages/doctrine_migrations.yaml",
-            "migrations/.gitignore"
-        ]
-    },
     "doctrine/event-manager": {
         "version": "1.1.1"
     },
@@ -74,9 +61,6 @@
     "doctrine/lexer": {
         "version": "1.2.1"
     },
-    "doctrine/migrations": {
-        "version": "3.3.2"
-    },
     "doctrine/orm": {
         "version": "2.10.2"
     },
@@ -85,12 +69,6 @@
     },
     "doctrine/sql-formatter": {
         "version": "1.1.2"
-    },
-    "friendsofphp/proxy-manager-lts": {
-        "version": "v1.0.5"
-    },
-    "laminas/laminas-code": {
-        "version": "4.4.3"
     },
     "lcobucci/clock": {
         "version": "2.1.0"
@@ -371,9 +349,6 @@
     },
     "symfony/service-contracts": {
         "version": "v2.4.0"
-    },
-    "symfony/stopwatch": {
-        "version": "v5.3.4"
     },
     "symfony/string": {
         "version": "v5.3.10"
