@@ -16,9 +16,10 @@ doctrine:
                 dir: '%kernel.project_dir%/src/User/Entity'
                 prefix: 'App\User\Entity'
                 alias: User
-            Maker:
-                is_bundle: false
-                type: attribute
-                dir: '%kernel.project_dir%/src/Entity'
-                prefix: 'App\Entity'
-                alias: Maker
+# Doctrine mapping for Maker Bundle, firstly create directory src/Entity, then uncomment following lines
+#            Maker:
+#                is_bundle: false
+#                type: attribute
+#                dir: '%kernel.project_dir%/src/Entity'
+#                prefix: 'App\Entity'
+#                alias: Maker
