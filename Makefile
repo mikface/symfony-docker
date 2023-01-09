@@ -1,6 +1,6 @@
 DOCKER_COMPOSE=docker-compose
 DOCKER_RUN=${DOCKER_COMPOSE} exec -u $(shell id -u):$(shell id -g) php
-
+DIR_BASENAME=$(shell basename $(PWD) | awk '{print tolower($$0)}')
 .PHONY: build
 build: build-container build-db fix-rights
 
@@ -10,11 +10,11 @@ build-container:
 
 .PHONY: build-db
 build-db:
-	docker exec -it $(shell basename $(PWD))_php_1 bash shell/db.sh
+	docker exec -it ${DIR_BASENAME}-php-1 bash shell/db.sh
 
 .PHONY: fix-rights
 fix-rights:
-	docker exec -it $(shell basename $(PWD))_php_1 bash shell/fix-rights.sh $(shell whoami)
+	docker exec -it ${DIR_BASENAME}-php-1 bash shell/fix-rights.sh $(shell whoami)
 
 .PHONY: clean-database
 clean-database:

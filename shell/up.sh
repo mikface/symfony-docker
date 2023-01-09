@@ -26,4 +26,5 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-docker exec -it `basename $PWD`_php_1 bash shell/up.sh
+# shellcheck disable=SC2046
+docker exec -it $(basename $PWD | awk '{print tolower($0)}')-php-1 bash shell/up.sh
