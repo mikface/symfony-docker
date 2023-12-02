@@ -8,14 +8,14 @@ use App\HelloWorld\Service\Greeting;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
-class GreetController
+final readonly class GreetController
 {
     public function __construct(private Greeting $greeting)
     {
     }
 
     #[Route('/hello-world/greet', name: 'hello_world.greet')]
-    public function action() : JsonResponse
+    public function action(): JsonResponse
     {
         return new JsonResponse(
             ['greet' => $this->greeting->sayHello()]

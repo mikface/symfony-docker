@@ -6,7 +6,7 @@ namespace App\Core\Service;
 
 use Doctrine\ORM\EntityManagerInterface;
 
-abstract class EntityManagerConstructor
+trait EntityManagerConstructor
 {
     public function __construct(protected EntityManagerInterface $em)
     {

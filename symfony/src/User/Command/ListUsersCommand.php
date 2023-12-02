@@ -14,31 +14,27 @@ use Symfony\Component\Console\Output\OutputInterface;
 use function array_map;
 use function json_encode;
 
-class ListUsersCommand extends Command
+final class ListUsersCommand extends Command
 {
-    private UserRepository $userRepository;
-
-    public function __construct(UserRepository $userManager)
+    public function __construct(private readonly UserRepository $userRepository)
     {
-        $this->userRepository = $userManager;
-
         parent::__construct();
     }
 
-    protected function configure() : void
+    protected function configure(): void
     {
         $this->setName('app:user:list')
             ->setDescription('Creates a new user.')
             ->setHelp('This command allows you to list all users');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output) : int
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $table = new Table($output);
         $table->setHeaders(['Email', 'Roles']);
         array_map(
-            static function (User $user) use ($table) : void {
-                $table->addRow([$user->getEmail(), json_encode($user->getRoles())]);
+            static function (User $user) use ($table): void {
+                $table->addRow([$user->getEmail(), json_encode($user->getRoles(), JSON_THROW_ON_ERROR)]);
             },
             $this->userRepository->getAllUsers()
         );

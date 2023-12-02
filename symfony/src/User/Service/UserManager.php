@@ -10,23 +10,21 @@ use App\User\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-class UserManager extends EntityManagerConstructor
+final class UserManager
 {
-    private UserRepository $userRepo;
-    private UserPasswordHasherInterface $hasher;
-
-    public function __construct(
-        EntityManagerInterface $em,
-        UserRepository $userRepo,
-        UserPasswordHasherInterface $hasher
-    ) {
-        parent::__construct($em);
-
-        $this->userRepo = $userRepo;
-        $this->hasher = $hasher;
+    use EntityManagerConstructor {
+        __construct as parentConstruct;
     }
 
-    public function create(string $email, string $password, string $role = User::ROLE_RESTRICTED) : bool
+    public function __construct(
+        EntityManagerInterface $entityManager,
+        private readonly UserRepository $userRepo,
+        private readonly UserPasswordHasherInterface $hasher,
+    ) {
+        $this->parentConstruct($entityManager);
+    }
+
+    public function create(string $email, string $password, string $role = User::ROLE_RESTRICTED): bool
     {
         if ($this->userRepo->findBy(['email' => $email])) {
             return false;
