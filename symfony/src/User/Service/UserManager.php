@@ -6,6 +6,7 @@ namespace App\User\Service;
 
 use App\Core\Service\EntityManagerConstructor;
 use App\User\Entity\User;
+use App\User\Enum\Role;
 use App\User\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -24,7 +25,7 @@ final class UserManager
         $this->parentConstruct($entityManager);
     }
 
-    public function create(string $email, string $password, string $role = User::ROLE_RESTRICTED): bool
+    public function create(string $email, string $password, string $role = Role::RESTRICTED->value): bool
     {
         if ($this->userRepo->findBy(['email' => $email])) {
             return false;

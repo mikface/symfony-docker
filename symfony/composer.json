@@ -21,9 +21,9 @@
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest",
-        "cdn77/coding-standard": "^6.0",
+        "cdn77/coding-standard": "^7.0",
         "phpstan/extension-installer": "^1.1",
-        "phpstan/phpstan": "^1.9",
+        "phpstan/phpstan": "^1.10",
         "phpstan/phpstan-doctrine": "^1.0",
         "phpstan/phpstan-symfony": "^1.0",
         "phpstan/phpstan-webmozart-assert": "^1.0",
