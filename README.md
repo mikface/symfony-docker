@@ -4,7 +4,7 @@ Easy kick off for Symfony REST API / microservice running in Docker container us
 
 ## Prerequisites
 1) Docker Engine (https://docs.docker.com/engine/install/)
-2) Docker Compose (https://docs.docker.com/compose/install/)
+2) Docker Compose (https://docs.docker.com/compose/install/) **V2 - IMPORTANT**
 ## Installation and Configuration
 
 1) `git clone git@github.com:mikface/symfony-docker.git <your-folder-name>` 
