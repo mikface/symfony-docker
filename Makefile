@@ -1,4 +1,4 @@
-DOCKER_COMPOSE=docker-compose
+DOCKER_COMPOSE=docker compose
 DOCKER_RUN=${DOCKER_COMPOSE} exec -u $(shell id -u):$(shell id -g) php
 DIR_BASENAME=$(shell basename $(PWD) | awk '{print tolower($$0)}')
 .PHONY: build
