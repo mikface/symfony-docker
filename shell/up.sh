@@ -20,7 +20,7 @@ if [ ! -f "$MYSQL_ENV_FILE" ] || [ ! -f "$SYMFONY_ENV_FILE" ]; then
   echo "DATABASE_URL=mysql://$USER_DATABASE:$PASSWORD@$DB_CONTAINER:3306/$USER_DATABASE?serverVersion=8.0" >> "$SYMFONY_ENV_FILE"
   echo 'CORS_ALLOW_ORIGIN=^https?://(localhost|127\.0\.0\.1)(:[0-9]+)?$' >> "$SYMFONY_ENV_FILE"
 fi
-docker-compose up -d
+docker compose up -d
 if [ $? -ne 0 ]; then
   echo "Docker compose failed"
   exit 1
