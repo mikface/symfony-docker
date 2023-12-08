@@ -18,7 +18,7 @@ final readonly class GreetController
     public function action(): JsonResponse
     {
         return new JsonResponse(
-            ['greet' => $this->greeting->sayHello()]
+            ['greet' => $this->greeting->sayHello()],
         );
     }
 }

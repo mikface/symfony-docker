@@ -18,7 +18,7 @@ final readonly class AuthGreetController
     public function action(): JsonResponse
     {
         return new JsonResponse(
-            ['greet' => $this->greeting->sayHelloLogged()]
+            ['greet' => $this->greeting->sayHelloLogged()],
         );
     }
 }

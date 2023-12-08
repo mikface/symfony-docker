@@ -53,7 +53,7 @@ final class CreateUserCommand extends Command
             ! $this->userManager->create(
                 $email,
                 $password,
-                $role
+                $role,
             )
         ) {
             $output->writeln('<error>Failed: User with entered email already exists</error>');

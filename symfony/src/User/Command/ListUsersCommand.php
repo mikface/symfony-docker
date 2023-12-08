@@ -14,6 +14,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 use function array_map;
 use function json_encode;
 
+use const JSON_THROW_ON_ERROR;
+
 final class ListUsersCommand extends Command
 {
     public function __construct(private readonly UserRepository $userRepository)
@@ -36,7 +38,7 @@ final class ListUsersCommand extends Command
             static function (User $user) use ($table): void {
                 $table->addRow([$user->getEmail(), json_encode($user->getRoles(), JSON_THROW_ON_ERROR)]);
             },
-            $this->userRepository->getAllUsers()
+            $this->userRepository->getAllUsers(),
         );
         $table->render();
 
