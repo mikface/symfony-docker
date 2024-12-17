@@ -1,4 +1,4 @@
-FROM php:8.3-fpm
+FROM php:8.4-fpm
 ARG TIMEZONE
 
 COPY docker/php/php.ini /usr/local/etc/php/conf.d/docker-php-config.ini
