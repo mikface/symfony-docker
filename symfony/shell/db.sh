@@ -5,7 +5,7 @@ fi
 
 settingUpDb() {
   if [ ! -f ".db-created" ]; then
-    bin/console doctrine:schema:create --quiet 2>/dev/null && touch .db-created
+    bin/console doctrine:schema:create  && touch .db-created
   else
     bin/console doctrine:schema:update --force --quiet 2>/dev/null
   fi

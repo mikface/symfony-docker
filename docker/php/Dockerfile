@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y \
     git \
     unzip \
     zlib1g-dev \
+    libpq-dev \
     libzip-dev \
     libfreetype6-dev \
     libpng-dev \
@@ -24,7 +25,7 @@ RUN apt-get update && apt-get install -y \
 RUN docker-php-ext-configure gd --with-jpeg --with-freetype 
 
 RUN docker-php-ext-install \
-    pdo pdo_mysql zip xsl gd intl opcache exif mbstring
+    pdo pgsql pdo_pgsql zip xsl gd intl opcache exif mbstring
 
 # Set timezone
 RUN ln -snf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && echo ${TIMEZONE} > /etc/timezone \
