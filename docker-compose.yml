@@ -19,29 +19,25 @@ services:
 #    networks:
 #      - symfony
 
-  php:
+  frankenphp:
     build:
       context: .
-      dockerfile: docker/php/Dockerfile
-      args:
-        TIMEZONE: Europe/Prague
+      dockerfile: docker/frankenphp/Dockerfile
+    # Mount the source code to /app (FrankenPHP's default web root)
     volumes:
-      - ./symfony/:/var/www/symfony/
+      - ./symfony/:/app
+      - ./docker/frankenphp/Caddyfile:/etc/caddy/Caddyfile
     env_file:
       - symfony-variables.env
-    networks:
-      - symfony
-
-  nginx:
-    build:
-      context: .
-      dockerfile: docker/nginx/Dockerfile
     environment:
-      VIRTUAL_HOST: symfony.localhost
-    volumes:
-      - ./symfony/:/var/www/symfony/
+      # This variable configures the Caddy server name and HTTPS/HTTP
+      # Changing to :80 allows use of the ports mapping below without auto-SSL certificates for localhost
+      SERVER_NAME: :80
     ports:
-      - 8081:80
+      # Port 80 inside container mapped to 8081 (matching your previous nginx setup)
+      - "8081:80"
+      - "443:443"
+      - "443:443/udp" # HTTP/3
     networks:
       - symfony
 

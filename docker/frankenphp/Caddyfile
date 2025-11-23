@@ -1,0 +1,25 @@
+# This Caddyfile is optimized for Symfony
+{
+	# Debug mode for development
+	debug
+	# FrankenPHP specific config
+	frankenphp {
+		# worker_mode allows booting the app once and keeping it in memory
+		# Remove the '#' below to enable it (ensure your app is compatible)
+		# worker /app/public/index.php
+	}
+}
+
+:80 {
+	# Set the webroot to the public folder of Symfony
+	root * /app/public
+
+	# Enable compression
+	encode zstd gzip
+
+	# Execute PHP files
+	php_server
+
+	# Allow access to static files
+	file_server
+}
