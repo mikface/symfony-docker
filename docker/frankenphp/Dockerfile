@@ -11,6 +11,8 @@ RUN install-php-extensions \
 # Set timezone (matching your previous args request)
 RUN echo "date.timezone=Europe/Prague" > /usr/local/etc/php/conf.d/timezone.ini
 
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
 # Copy the Caddyfile (if you want custom Caddy config, otherwise the default works for most)
 # We will rely on the default behavior or the mounted Caddyfile in docker-compose
 # COPY docker/frankenphp/Caddyfile /etc/caddy/Caddyfile
