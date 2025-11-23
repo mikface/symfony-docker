@@ -10,11 +10,11 @@ build-container:
 
 .PHONY: build-db
 build-db:
-	docker exec -it ${DIR_BASENAME}-php-1 bash shell/db.sh
+	docker exec -it ${DIR_BASENAME}-frankenphp-1 bash shell/db.sh
 
 .PHONY: fix-rights
 fix-rights:
-	docker exec -it ${DIR_BASENAME}-php-1 bash shell/fix-rights.sh $(shell whoami)
+	docker exec -it ${DIR_BASENAME}-frankenphp-1 bash shell/fix-rights.sh $(shell whoami)
 
 .PHONY: clean-database
 clean-database:
