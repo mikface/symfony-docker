@@ -1,5 +1,5 @@
 DOCKER_COMPOSE=docker compose
-DOCKER_RUN=${DOCKER_COMPOSE} exec -u $(shell id -u):$(shell id -g) php
+DOCKER_RUN=${DOCKER_COMPOSE} exec -u $(shell id -u):$(shell id -g) frankenphp
 DIR_BASENAME=$(shell basename $(PWD) | awk '{print tolower($$0)}')
 .PHONY: build
 build: build-container build-db fix-rights
@@ -31,7 +31,7 @@ cs:
 
 .PHONY: phpstan
 phpstan:
-	${DOCKER_RUN} vendor/bin/phpstan analyse
+	${DOCKER_RUN} vendor/bin/phpstan analyse --memory-limit 1G
 
 .PHONY: down
 down:

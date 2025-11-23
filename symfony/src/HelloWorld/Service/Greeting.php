@@ -6,16 +6,16 @@ namespace App\HelloWorld\Service;
 
 final readonly class Greeting
 {
-    private const string GREETING = 'Hello, everyone!';
-    private const string GREETING_LOGGED = 'Hello, logged user!';
+    private const string Greeting = 'Hello, everyone!';
+    private const string GreetingLogged = 'Hello, logged user!';
 
     public function sayHello(): string
     {
-        return self::GREETING;
+        return self::Greeting;
     }
 
     public function sayHelloLogged(): string
     {
-        return self::GREETING_LOGGED;
+        return self::GreetingLogged;
     }
 }
