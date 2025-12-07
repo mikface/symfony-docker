@@ -18,20 +18,17 @@ use const JSON_THROW_ON_ERROR;
 
 final class ListUsersCommand extends Command
 {
-    public function __construct(private readonly UserRepository $userRepository)
-    {
+    public function __construct(private readonly UserRepository $userRepository) {
         parent::__construct();
     }
 
-    protected function configure(): void
-    {
+    protected function configure(): void {
         $this->setName('app:user:list')
             ->setDescription('Creates a new user.')
             ->setHelp('This command allows you to list all users');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output): int
-    {
+    protected function execute(InputInterface $input, OutputInterface $output): int {
         $table = new Table($output);
         $table->setHeaders(['ID', 'Email', 'Roles']);
         array_map(

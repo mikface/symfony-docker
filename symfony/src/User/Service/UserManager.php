@@ -25,8 +25,7 @@ final class UserManager
         $this->parentConstruct($entityManager);
     }
 
-    public function create(string $email, string $password, string $role = Role::RESTRICTED->value): bool
-    {
+    public function create(string $email, string $password, string $role = Role::RESTRICTED->value): bool {
         if ($this->userRepo->findBy(['email' => $email])) {
             return false;
         }

@@ -36,8 +36,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string')]
     public string $password;
 
-    public function getUserIdentifier(): string
-    {
+    public function getUserIdentifier(): string {
         Assert::stringNotEmpty($this->email);
 
         return $this->email;
@@ -48,8 +47,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      *
      * @see UserInterface
      */
-    public function getRoles(): array
-    {
+    public function getRoles(): array {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
         $roles[] = Role::USER->value;
@@ -58,8 +56,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /** @see UserInterface */
-    public function getPassword(): string
-    {
+    public function getPassword(): string {
         return $this->password;
     }
 }

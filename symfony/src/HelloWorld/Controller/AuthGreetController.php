@@ -10,13 +10,11 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final readonly class AuthGreetController
 {
-    public function __construct(private Greeting $greeting)
-    {
+    public function __construct(private Greeting $greeting) {
     }
 
     #[Route('/auth/hello-world/greet', name: 'auth.hello_world.greet')]
-    public function action(): JsonResponse
-    {
+    public function action(): JsonResponse {
         return new JsonResponse(
             ['greet' => $this->greeting->sayHelloLogged()],
         );

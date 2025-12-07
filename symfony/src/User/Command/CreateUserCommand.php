@@ -14,21 +14,18 @@ use Webmozart\Assert\Assert;
 
 final class CreateUserCommand extends Command
 {
-    public function __construct(private readonly UserManager $userManager)
-    {
+    public function __construct(private readonly UserManager $userManager) {
         parent::__construct();
     }
 
-    protected function configure(): void
-    {
+    protected function configure(): void {
         $this->setName('app:user:create');
         $this
             ->setDescription('Creates a new user.')
             ->setHelp('This command allows you to create a user...');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output): int
-    {
+    protected function execute(InputInterface $input, OutputInterface $output): int {
         $questionHelper = $this->getHelper('question');
         Assert::isInstanceOf($questionHelper, QuestionHelper::class);
         $questionEmail = new Question('User email: ', false);

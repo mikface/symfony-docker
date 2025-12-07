@@ -10,13 +10,11 @@ final readonly class Greeting
 
     private const string GreetingLogged = 'Hello, logged user!';
 
-    public function sayHello(): string
-    {
+    public function sayHello(): string {
         return self::Greeting;
     }
 
-    public function sayHelloLogged(): string
-    {
+    public function sayHelloLogged(): string {
         return self::GreetingLogged;
     }
 }

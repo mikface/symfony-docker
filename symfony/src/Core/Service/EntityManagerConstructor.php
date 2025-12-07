@@ -8,7 +8,6 @@ use Doctrine\ORM\EntityManagerInterface;
 
 trait EntityManagerConstructor
 {
-    public function __construct(protected EntityManagerInterface $em)
-    {
+    public function __construct(protected EntityManagerInterface $em) {
     }
 }
