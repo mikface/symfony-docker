@@ -43,14 +43,14 @@ final class CreateUserCommand extends Command
         Assert::string($password);
         Assert::string($role);
 
-        if (! $email || ! $password) {
+        if (!$email || !$password) {
             $output->writeln('<error>Failed: Enter valid credentials</error>');
 
             return Command::FAILURE;
         }
 
         if (
-            ! $this->userManager->create(
+            !$this->userManager->create(
                 $email,
                 $password,
                 $role,
@@ -61,7 +61,7 @@ final class CreateUserCommand extends Command
             return Command::FAILURE;
         }
 
-        $output->writeln('<info>Success: User with email ' . $email . ' created</info>');
+        $output->writeln('<info>Success: User with email '.$email.' created</info>');
 
         return Command::SUCCESS;
     }

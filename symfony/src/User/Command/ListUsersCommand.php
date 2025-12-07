@@ -33,10 +33,10 @@ final class ListUsersCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $table = new Table($output);
-        $table->setHeaders(['Email', 'Roles']);
+        $table->setHeaders(['ID', 'Email', 'Roles']);
         array_map(
             static function (User $user) use ($table): void {
-                $table->addRow([$user->getEmail(), json_encode($user->getRoles(), JSON_THROW_ON_ERROR)]);
+                $table->addRow([$user->id, $user->email, json_encode($user->getRoles(), JSON_THROW_ON_ERROR)]);
             },
             $this->userRepository->getAllUsers(),
         );

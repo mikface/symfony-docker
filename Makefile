@@ -23,11 +23,11 @@ clean-database:
 
 .PHONY: fix
 fix:
-	${DOCKER_RUN} vendor/bin/phpcbf
+	${DOCKER_RUN} vendor/bin/php-cs-fixer fix
 
 .PHONY: cs
 cs:
-	${DOCKER_RUN} vendor/bin/phpcs
+	${DOCKER_RUN} vendor/bin/php-cs-fixer check -vvv
 
 .PHONY: phpstan
 phpstan:

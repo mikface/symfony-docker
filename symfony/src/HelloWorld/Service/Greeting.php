@@ -7,6 +7,7 @@ namespace App\HelloWorld\Service;
 final readonly class Greeting
 {
     private const string Greeting = 'Hello, everyone!';
+
     private const string GreetingLogged = 'Hello, logged user!';
 
     public function sayHello(): string

@@ -6,7 +6,7 @@ namespace App\HelloWorld\Controller;
 
 use App\HelloWorld\Service\Greeting;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
 final readonly class AuthGreetController
 {

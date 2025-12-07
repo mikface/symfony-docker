@@ -32,9 +32,9 @@ final class UserManager
         }
 
         $newUser = new User();
-        $newUser->setEmail($email);
-        $newUser->setPassword($this->hasher->hashPassword($newUser, $password));
-        $newUser->setRoles([$role]);
+        $newUser->email = $email;
+        $newUser->password = $this->hasher->hashPassword($newUser, $password);
+        $newUser->roles = [$role];
         $this->em->persist($newUser);
         $this->em->flush();
 
