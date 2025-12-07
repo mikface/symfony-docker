@@ -1,6 +1,6 @@
-# Symfony 7 + PHP 8.5 + PostgreSQL 17 + FrankenPHP boilerplate
+# Symfony 8 + PHP 8.5 + PostgreSQL 18 + FrankenPHP boilerplate
 
-Easy kick off for Symfony REST API / microservice running in Docker container using LEMP stack. Pre-packed with basic code quality tools. 
+Easy kick off for Symfony REST API / microservice running in Docker container using Postgres + FrankenPHP stack. Pre-packed with basic code quality tools. 
 
 ## Prerequisites
 1) Docker Engine (https://docs.docker.com/engine/install/)
@@ -53,7 +53,7 @@ You should now be able to visit page for logged users:
 
 ## Code quality
 
-### Run Codesniffer:
+### Run php-cs-fixer:
 
 `make cs`
 

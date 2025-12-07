@@ -1,11 +1,11 @@
 services:
   db:
-    image: postgres:17
+    image: postgres:18
     restart: always
     env_file:
       - postgres-variables.env
     volumes:
-      - pg_data:/var/lib/postgresql/data
+      - pg_data:/var/lib/postgresql
     ports:
       - 5433:5432
     networks:
@@ -38,6 +38,8 @@ services:
       - "8081:80"
       - "443:443"
       - "443:443/udp" # HTTP/3
+    depends_on:
+      - db
     networks:
       - symfony
 
